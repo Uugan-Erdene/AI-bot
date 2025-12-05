@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+// import { useRouter } from "next/router";
 import { Refresh } from "../icons/refresh";
 import { Star } from "../icons/star";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,11 @@ export const IngredientRecognition = () => {
   const [foodName, setFoodName] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [loading, setLoading] = useState(false);
+  // const router = useRouter();
+  const handleRefresh = () => {
+    setFoodName("");
+    setIngredients("");
+  };
 
   const handleIngredients = async () => {
     console.log(foodName, "wdas");
@@ -43,7 +49,10 @@ export const IngredientRecognition = () => {
           </span>
           Ingredient recognition
         </h2>
-        <button className="flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer ">
+        <button
+          className="flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer "
+          onClick={handleRefresh}
+        >
           <Refresh />
         </button>
       </div>

@@ -13,7 +13,7 @@ export const ImageAnalysis = () => {
   const [result, setResult] = useState("");
   const [preview, setPreview] = useState("");
 
-  const handleImageChange = (event) => {
+  const handleImageChange = (event: any) => {
     const file = event.target.files[0];
     if (!file) return;
 
@@ -22,7 +22,6 @@ export const ImageAnalysis = () => {
     setPreview(imageUrl);
   };
   const handleGenerate = async () => {
-    console.log(selectedFile);
     if (!selectedFile) return;
     setIsGenerating(true);
     const from = new FormData();
