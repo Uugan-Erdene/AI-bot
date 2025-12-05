@@ -5,16 +5,16 @@ const ai = new GoogleGenAI({ apiKey: AI_TOKEN || "" });
 export const POST = async (request: NextRequest) => {
   try {
     const req = await request.json();
-    const { prompt } = req;
-    console.log(req);
-    if (!prompt) {
+    const { foodName } = req;
+    console.log(req, "qwerty");
+    if (!foodName) {
       return NextResponse.json(
         { error: "no prompt provided" },
         { status: 401 }
       );
     }
     const response = await ai.models.generateContent({
-      model: "gemini-3-pro-preview",
+      model: "gemini-2.5-flash",
       contents:
         "Explain how AI works in a few words, list the main ingredients of the food",
     });

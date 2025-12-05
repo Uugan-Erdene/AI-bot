@@ -10,6 +10,8 @@ export const IngredientRecognition = () => {
   const [loading, setLoading] = useState(false);
 
   const handleIngredients = async () => {
+    console.log(foodName, "wdas");
+
     if (!foodName.trim()) return;
     setLoading(true);
     setIngredients("");
@@ -22,8 +24,8 @@ export const IngredientRecognition = () => {
       const data = await response.json();
       if (data.error) {
         console.error(data.error);
-      } else if (data.string) {
-        setIngredients(data.string);
+      } else if (data.text) {
+        setIngredients(data.text);
       }
     } catch (error) {
       console.log(error);
@@ -52,7 +54,7 @@ export const IngredientRecognition = () => {
 
       <div className="flex items-center flex-col gap-2 justify-end mb-10">
         <input
-          className="w-145 h-31 border border-[gray] rounded-lg pl-3 pb-22"
+          className="w-145 h-31 border border-[gray] rounded-lg pl-3 pb-22 overflow-y-hidden"
           placeholder="Orts todorhoiloh"
           value={foodName}
           onChange={(e) => setFoodName(e.target.value)}
@@ -75,9 +77,10 @@ export const IngredientRecognition = () => {
       </h3>
 
       <input
-        className="text-sm text-muted-foreground border w-145 min-h-10 rounded-lg flex items-center pl-3"
-        placeholder="First, enter your image to recognize the ingredients."
+        className="text-sm text-muted-foreground border w-145 min-h-10 rounded-lg flex items-center pl-3 overflow-hidden"
+        placeholder="First, enter your text to recognize an ingredients."
         value={ingredients}
+        readOnly
       />
     </div>
   );
