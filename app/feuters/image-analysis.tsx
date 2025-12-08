@@ -12,6 +12,7 @@ export const ImageAnalysis = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [result, setResult] = useState("");
   const [preview, setPreview] = useState("");
+  const [loading, setLoading] = useState(false);
   const handleRefresh = () => {
     setResult("");
     setPreview("");
@@ -20,6 +21,7 @@ export const ImageAnalysis = () => {
   const handleImageChange = (event: any) => {
     const file = event.target.files[0];
     if (!file) return;
+    setLoading(true);
 
     const imageUrl = URL.createObjectURL(file);
     setSelectedFile(file);
@@ -40,6 +42,7 @@ export const ImageAnalysis = () => {
       `${data?.objects?.map((cur: { label: string }) => cur.label).join(",")}`
     );
     setIsGenerating(false);
+    setLoading(false);
   };
   return (
     <div className="w-full max-w-3xl mx-auto mt-6">
@@ -74,8 +77,9 @@ export const ImageAnalysis = () => {
         <Button
           className="px-6 h-10 rounded-lg bg-gray-600 hover:bg-gray-700 cursor-pointer"
           onClick={handleGenerate}
+          // disabled={loading || !preview.trim()}
         >
-          Generate
+          {/* {loading ? "loading..." : "Generate"} */}Generate
         </Button>
         {preview.length !== 0 && (
           <img
