@@ -12,6 +12,10 @@ export const ImageAnalysis = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [result, setResult] = useState("");
   const [preview, setPreview] = useState("");
+  const handleRefresh = () => {
+    setResult("");
+    setPreview("");
+  };
 
   const handleImageChange = (event: any) => {
     const file = event.target.files[0];
@@ -46,7 +50,10 @@ export const ImageAnalysis = () => {
           </span>
           Image analysis
         </h2>
-        <button className="flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer ">
+        <button
+          onClick={handleRefresh}
+          className="flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer "
+        >
           <Refresh />
         </button>
       </div>

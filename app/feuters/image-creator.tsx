@@ -11,6 +11,11 @@ export const ImageCreator = () => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  const handleRefresh = () => {
+    setPrompt("");
+    setImageUrl(null);
+  };
+
   const handleGenerate = async () => {
     if (!prompt.trim()) return; // зөв state ашиглаж байна
     setLoading(true);
@@ -43,7 +48,10 @@ export const ImageCreator = () => {
           <Star />
           Food image creator
         </h2>
-        <button className="flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer">
+        <button
+          onClick={handleRefresh}
+          className="flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer"
+        >
           <Refresh />
         </button>
       </div>
