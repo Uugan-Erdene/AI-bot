@@ -50,10 +50,12 @@ export const IngredientRecognition = () => {
           Ingredient recognition
         </h2>
         <button
-          className="flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer "
+          className={`flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer ${
+            ingredients ? "bg-black text-white" : "bg-white text-black"
+          }`}
           onClick={handleRefresh}
         >
-          <Refresh />
+          <Refresh color={ingredients ? "white" : "black"} />
         </button>
       </div>
 

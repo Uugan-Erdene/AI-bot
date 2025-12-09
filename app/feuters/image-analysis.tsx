@@ -5,6 +5,7 @@ import { Refresh } from "../icons/refresh";
 import { Star } from "../icons/star";
 import { Button } from "@/components/ui/button";
 import { NoteBook } from "../icons/notebook";
+import { WhiteRefresh } from "../icons/white-refresh";
 // import { DeleteTrash } from "../icons/deletetrash";
 
 export const ImageAnalysis = () => {
@@ -55,9 +56,11 @@ export const ImageAnalysis = () => {
         </h2>
         <button
           onClick={handleRefresh}
-          className="flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer "
+          className={`flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer ${
+            result ? "bg-black text-white" : "bg-white text-black"
+          }`}
         >
-          <Refresh />
+          <Refresh color={result ? "#ffffff" : "#000000"} />
         </button>
       </div>
 

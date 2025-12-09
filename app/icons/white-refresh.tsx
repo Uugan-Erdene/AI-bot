@@ -1,6 +1,5 @@
-export const Refresh = (props: { color?: string }) => {
-  const { color = "#18181B" } = props;
-
+export const WhiteRefresh = (props: { color?: string }) => {
+  const { color = "#FAFAFA" } = props;
   return (
     <svg
       width="15"

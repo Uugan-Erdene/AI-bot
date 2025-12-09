@@ -50,9 +50,11 @@ export const ImageCreator = () => {
         </h2>
         <button
           onClick={handleRefresh}
-          className="flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer"
+          className={`flex justify-center items-center w-12 h-10 rounded-lg border cursor-pointer ${
+            imageUrl ? "bg-black" : "bg-white"
+          }`}
         >
-          <Refresh />
+          <Refresh color={imageUrl ? "white" : "black"} />
         </button>
       </div>
 
