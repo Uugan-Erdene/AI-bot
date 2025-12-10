@@ -19,8 +19,8 @@ export const ImageAnalysis = () => {
     setPreview("");
   };
 
-  const handleImageChange = (event: any) => {
-    const file = event.target.files[0];
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (!file) return;
     setLoading(true);
 
